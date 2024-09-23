@@ -16,9 +16,16 @@ module.exports = {
 	],
 	module: {
 		strictExportPresence: true,
+		rules: [
+			{
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/,
+			},
+		]
 	},
 	resolve: {
-		extensions: ['.js', '.jsx'],
+		extensions: ['.js', '.jsx', '.ts', '.tsx'],
 		alias: {
 			react: 'preact/compat',
 			'react-dom/test-utils': 'preact/test-utils',

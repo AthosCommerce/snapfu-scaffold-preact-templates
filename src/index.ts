@@ -179,18 +179,18 @@ new SnapTemplates({
 	search: {
 		targets: [
 			{
-				selector: '#searchspring-layout',
+				selector: '#searchspring-templates',
 				component: 'Search',
 				// resultComponent: 'Result',
 			},
 		],
 	},
 	autocomplete: {
-		inputSelector: 'input.searchspring-ac, .thing2',
+		inputSelector: 'input#search-input',
 		targets: [
 			{
 				// does this force usage to after the input only?
-				selector: 'input.searchspring-ac',
+				selector: 'input#search-input',
 				// theme: 'myTheme',
 				component: 'Autocomplete',
 				// resultComponent: 'CustomResult',
