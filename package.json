@@ -22,7 +22,7 @@
 				"name": "{{snapfu.name}}"
 			}
 		},
-		"framework": "preact",
+		"framework": "preact/templates",
 		"updates": [
 			"all"
 		],
