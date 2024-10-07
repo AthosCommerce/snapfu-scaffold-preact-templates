@@ -22,7 +22,8 @@
 				"name": "{{snapfu.name}}"
 			}
 		},
-		"framework": "preact/templates",
+		"framework": "preact",
+		"distribution": "templates",
 		"updates": [
 			"all"
 		],
