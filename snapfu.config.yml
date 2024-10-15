@@ -1,0 +1,19 @@
+# scaffold descriptor file
+name: 'Templates'
+framework: 'preact'
+
+# custom scaffold variables
+variables: [
+  {
+    name: 'platform',
+    message: 'Shopping Platform:',
+    type: 'list',
+    choices: [
+      { name: 'Shopify', value: 'shopify' },
+      { name: 'BigCommerce', value: 'bigCommerce' },
+      { name: 'Magento2', value: 'magento2' },
+      { name: 'Other', value: 'other' }
+    ],
+    default: 'other',
+  }
+]

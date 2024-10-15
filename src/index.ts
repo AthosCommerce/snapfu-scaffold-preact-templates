@@ -6,6 +6,7 @@ new SnapTemplates({
 		siteId: '8uyt2m',
 		language: 'en',
 		currency: 'usd',
+		platform: '{{ snapfu.variables.platform }}',
 	},
 	// components: {
 	// 	result: {
@@ -21,16 +22,12 @@ new SnapTemplates({
 			style: globalStyles,
 			// resultComponent: 'Result',
 			// variables: {
-			// 	breakpoints: [0, 768, 1024, 1280],
+			// 	breakpoints: [768, 1024, 1280],
 			// },
 			// overrides: {
 			// 	components: {},
 			// 	layoutOptions: [],
 			// 	responsive: [
-			// 		{
-			// 			components: {},
-			// 			layoutOptions: [],
-			// 		},
 			// 		{
 			// 			components: {},
 			// 			layoutOptions: [],

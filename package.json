@@ -27,13 +27,13 @@
 		"updates": [
 			"all"
 		],
-		"tags": ["templates"],
-		"version": "1.1.10",
+		"tags": ["templates", "{{ snapfu.variables.platform }}"],
+		"version": "1.2.1",
 		"scaffold": "snapfu-scaffold-preact-templates"
 	},
 	"prettier": "@searchspring/prettier",
 	"dependencies": {
-		"@searchspring/snap-preact": "1.1.10",
+		"@searchspring/snap-preact": "1.2.1",
 		"mobx": "6.9.0",
 		"mobx-react": "7.6.0",
 		"preact": "10.9.0"
