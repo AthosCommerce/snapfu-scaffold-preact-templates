@@ -2,9 +2,11 @@ export const globalStyles = (theme) => {
 	const { variables } = theme;
 	return {
 		// '.ss__result': {
-		// 	background: variables.color.primary,
+		// 	background: variables.colors.primary,
 		// },
-		// [`@media (max-width: ${variables.breakpoints[1]}px)`]: {
+
+		// // mobile styles
+		// [`@media (max-width: ${variables.breakpoints[0]}px)`]: {
 		// 	'.ss__result': {},
 		// },
 	};

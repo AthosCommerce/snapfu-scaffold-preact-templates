@@ -1,6 +1,6 @@
 {
-	"name": "{{snapfu.name}}",
-	"author": "{{snapfu.author}}",
+	"name": "{{ snapfu.name }}",
+	"author": "{{ snapfu.author }}",
 	"version": "0.1.0",
 	"license": "MIT",
 	"main": "index.js",
@@ -18,8 +18,8 @@
 	},
 	"searchspring": {
 		"siteId": {
-			"{{snapfu.siteId}}": {
-				"name": "{{snapfu.name}}"
+			"{{ snapfu.siteId }}": {
+				"name": "{{ snapfu.name }}"
 			}
 		},
 		"framework": "preact",

@@ -3,17 +3,12 @@ import { globalStyles } from './styles';
 
 new SnapTemplates({
 	config: {
-		siteId: '8uyt2m',
-		language: 'en',
-		currency: 'usd',
+		siteId: '{{ snapfu.siteId }}',
 		platform: '{{ snapfu.variables.platform }}',
 	},
 	// components: {
 	// 	result: {
 	// 		CustomResult: async () => (await import('./components/Result')).CustomResult,
-	// 	},
-	// 	badge: {
-	// 		CustomPill: async () => (await import('./components/Result')).Result,
 	// 	},
 	// },
 	themes: {
