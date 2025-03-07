@@ -15,7 +15,7 @@ new SnapTemplates({
 		global: {
 			extends: 'bocachica',
 			style: globalStyles,
-			// resultComponent: 'Result',
+			// resultComponent: 'CustomResult',
 			// variables: {
 			// 	breakpoints: [768, 1024, 1280],
 			// },
@@ -39,23 +39,29 @@ new SnapTemplates({
 			// },
 		},
 	},
+	recommendation: {
+		default: {
+			Recs: {
+				component: 'Recommendation',
+			}
+		},
+	},
 	search: {
 		targets: [
 			{
 				selector: '#searchspring-templates',
 				component: 'Search',
-				// resultComponent: 'Result',
+				// resultComponent: 'CustomResult',
 				// theme: 'global',
 			},
 		],
 	},
 	autocomplete: {
-		inputSelector: 'input#search-input',
 		targets: [
 			{
 				selector: 'input#search-input',
 				component: 'Autocomplete',
-				// resultComponent: 'Result',
+				// resultComponent: 'CustomResult',
 				// theme: 'global',
 			},
 		],
