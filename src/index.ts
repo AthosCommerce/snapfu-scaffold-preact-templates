@@ -37,18 +37,16 @@ new SnapTemplates({
 				selector: '#searchspring-templates',
 				component: 'Search',
 				// resultComponent: 'Result',
-				// theme: 'global',
 			},
 		],
 	},
 	autocomplete: {
-		inputSelector: 'input#search-input',
 		targets: [
 			{
+				inputSelector: 'input#search-input',
 				selector: 'input#search-input',
-				component: 'Autocomplete',
+				component: 'AutocompleteTemplate',
 				// resultComponent: 'Result',
-				// theme: 'global',
 			},
 		],
 	},
