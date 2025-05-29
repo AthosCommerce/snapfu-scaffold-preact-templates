@@ -1,6 +1,11 @@
 import { SnapTemplates } from '@searchspring/snap-preact';
 import { globalStyles } from './styles';
 
+// const breakpoints = {
+// 	mobile: 830,
+// 	tablet: 1030,
+// 	desktop: 1230
+// };
 new SnapTemplates({
 	config: {
 		siteId: '{{ snapfu.siteId }}',
@@ -11,34 +16,21 @@ new SnapTemplates({
 	// 		CustomResult: async () => (await import('./components/Result')).CustomResult,
 	// 	},
 	// },
-	themes: {
-		global: {
-			extends: 'bocachica',
-			style: globalStyles,
-			// resultComponent: 'Result',
-			// variables: {
-			// 	breakpoints: [768, 1024, 1280],
-			// },
-			// overrides: {
-			// 	components: {},
-			// 	layoutOptions: [],
-			// 	responsive: [
-			// 		{
-			// 			components: {},
-			// 			layoutOptions: [],
-			// 		},
-			// 		{
-			// 			components: {},
-			// 			layoutOptions: [],
-			// 		},
-			// 		{
-			// 			components: {},
-			// 			layoutOptions: [],
-			// 		},
-			// 	],
-			// },
-		},
+	theme: {
+		extends: 'base',
+		style: globalStyles,
+		// variables: {
+		// 	breakpoints: breakpoints,
+		// 	colors: {}
+		// },
+		// overrides: {
+		// 	default: {},
+		// 	mobile: {},
+		// 	tablet: {},
+		// 	desktop: {}
+		// },
 	},
+	// plugins: {},
 	search: {
 		targets: [
 			{
