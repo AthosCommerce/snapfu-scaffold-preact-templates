@@ -21,6 +21,7 @@ new SnapTemplates({
 	theme: {
 		extends: 'pike',
 		style: globalStyles,
+		// resultComponent: 'CustomResult',
 		// variables: {
 		// 	breakpoints: breakpoints,
 		// 	colors: {}
@@ -37,7 +38,6 @@ new SnapTemplates({
 			{
 				selector: '#athos-templates',
 				component: 'Search',
-				// resultComponent: 'CustomResult',
 			},
 		],
 	},
@@ -47,7 +47,6 @@ new SnapTemplates({
 				inputSelector: 'input#search-input',
 				selector: 'input#search-input',
 				component: 'AutocompleteFixed',
-				// resultComponent: 'CustomResult',
 			},
 		],
 	},

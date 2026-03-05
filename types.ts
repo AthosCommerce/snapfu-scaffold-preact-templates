@@ -1,3 +1,6 @@
+// DO NOT EDIT - THIS FILE CAN/WILL BE REPLACED!!!
+// ***********************************************
+
 import type * as SnapPreactTypes from '@athoscommerce/snap-preact';
 import type * as ComponentTypes from '@athoscommerce/snap-preact/components';
 import type * as ControllerTypes from '@athoscommerce/snap-controller';
@@ -47,6 +50,8 @@ declare global {
 		// custom: {
 		// }
 	};
+
+	type GlobalStyles = SnapPreactTypes.GlobalThemeStyleScript;
 }
 
 // declare module 'mobx-react' {

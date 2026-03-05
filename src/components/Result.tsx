@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Price, Image, OverlayBadge, CalloutBadge } from '@athoscommerce/snap-preact/components';
 
-export const CustomResult = (props) => {
+export const CustomResult = (props: { result: Result; controller: SearchController }) => {
 	const { result, controller } = props;
 	const core = result.mappings.core;
 

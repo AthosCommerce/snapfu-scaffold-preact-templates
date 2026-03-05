@@ -45,7 +45,6 @@
 		"@babel/preset-env": "^7.29.0",
 		"@babel/preset-react": "^7.28.5",
 		"@babel/runtime": "^7.28.6",
-		"@emotion/react": "11.14.0",
 		"@lhci/cli": "^0.15.1",
 		"@searchspring/browserslist-config-snap": "^1.0.6",
 		"@searchspring/prettier": "^1.0.2",
