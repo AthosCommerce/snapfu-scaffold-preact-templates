@@ -14,10 +14,10 @@
 		"clean": "rm -rf ./node_modules && rm -f ./package-lock.json",
 		"dev": "kill $(lsof -ti:3333,8888); webpack serve --config webpack.dev.js",
 		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
-		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\"",
-		"prepare": "husky install"
+		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\""
 	},
-	"searchspring": {
+	"athos": {
+		"version": "1.1.0",
 		"siteId": {
 			"{{ snapfu.siteId }}": {
 				"name": "{{ snapfu.name }}"
@@ -28,44 +28,43 @@
 		"updates": [
 			"all"
 		],
-		"tags": ["templates", "{{ snapfu.variables.platform }}"],
-		"version": "1.8.0",
+		"tags": [
+			"templates",
+			"{{ snapfu.variables.platform }}"
+		],
 		"scaffold": "snapfu-scaffold-preact-templates"
 	},
 	"prettier": "@searchspring/prettier",
 	"dependencies": {
-		"@searchspring/snap-preact": "1.8.0",
-		"mobx": "6.9.0",
-		"mobx-react": "7.6.0",
-		"preact": "10.9.0"
+		"@athoscommerce/snap-preact": "1.1.3"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.21.4",
-		"@babel/eslint-parser": "^7.21.3",
-		"@babel/plugin-transform-react-jsx": "^7.21.0",
-		"@babel/plugin-transform-runtime": "^7.21.4",
-		"@babel/preset-env": "^7.21.4",
-		"@babel/preset-react": "^7.18.6",
-		"@babel/runtime": "^7.21.0",
-		"@emotion/react": "11.13.0",
-		"@lhci/cli": "^0.14.0",
+		"@babel/core": "^7.29.0",
+		"@babel/plugin-transform-react-jsx": "^7.28.6",
+		"@babel/plugin-transform-runtime": "^7.29.0",
+		"@babel/preset-env": "^7.29.0",
+		"@babel/preset-react": "^7.28.5",
+		"@babel/runtime": "^7.28.6",
+		"@lhci/cli": "^0.15.1",
 		"@searchspring/browserslist-config-snap": "^1.0.6",
 		"@searchspring/prettier": "^1.0.2",
-		"babel-loader": "^9.1.2",
-		"core-js": "^3.30.0",
-		"css-loader": "^6.7.3",
-		"eslint": "^8.37.0",
-		"eslint-plugin-react": "^7.32.2",
-		"husky": "^8.0.3",
-		"lint-staged": "^13.2.0",
-		"prettier": "^2.8.7",
-		"webpack": "^5.77.0",
-		"webpack-bundle-analyzer": "^4.8.0",
-		"webpack-cli": "^5.0.1",
-		"webpack-dev-server": "^4.13.2",
-		"webpack-merge": "^5.8.0",
-		"whatwg-fetch": "3.6.2",
-		"ts-loader": "9.5.1"
+		"@typescript-eslint/parser": "^8.56.1",
+		"babel-loader": "^10.0.0",
+		"core-js": "^3.48.0",
+		"css-loader": "^7.1.4",
+		"eslint": "^9.39.3",
+		"eslint-plugin-react": "^7.37.5",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.3.2",
+		"prettier": "^3.8.1",
+		"ts-loader": "9.5.4",
+		"typescript-eslint": "^8.56.1",
+		"webpack": "^5.105.4",
+		"webpack-bundle-analyzer": "^5.2.0",
+		"webpack-cli": "^6.0.1",
+		"webpack-dev-server": "^5.2.3",
+		"webpack-merge": "^6.0.1",
+		"whatwg-fetch": "3.6.20"
 	},
 	"lint-staged": {
 		"./package.json": [

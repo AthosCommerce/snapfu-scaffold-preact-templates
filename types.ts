@@ -1,8 +1,11 @@
-import type * as SnapPreactTypes from '@searchspring/snap-preact';
-import type * as ComponentTypes from '@searchspring/snap-preact/components';
-import type * as ControllerTypes from '@searchspring/snap-controller';
-import type * as StoreTypes from '@searchspring/snap-store-mobx';
-import type * as EventManagerTypes from '@searchspring/snap-event-manager';
+// DO NOT EDIT - THIS FILE CAN/WILL BE REPLACED!!!
+// ***********************************************
+
+import type * as SnapPreactTypes from '@athoscommerce/snap-preact';
+import type * as ComponentTypes from '@athoscommerce/snap-preact/components';
+import type * as ControllerTypes from '@athoscommerce/snap-controller';
+import type * as StoreTypes from '@athoscommerce/snap-store-mobx';
+import type * as EventManagerTypes from '@athoscommerce/snap-event-manager';
 
 declare global {
 	const BRANCHNAME: string;
@@ -47,6 +50,8 @@ declare global {
 		// custom: {
 		// }
 	};
+
+	type GlobalStyles = SnapPreactTypes.GlobalThemeStyleScript;
 }
 
 // declare module 'mobx-react' {

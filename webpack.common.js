@@ -1,3 +1,7 @@
+// DO NOT EDIT - THIS FILE CAN/WILL BE REPLACED!!!
+// ***********************************************
+
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -9,10 +13,11 @@ module.exports = {
 		modulesSpace: 70,
 	},
 	plugins: [
-		// to disable code splitting, include the following:
-		// new webpack.optimize.LimitChunkCountPlugin({
-		// 	maxChunks: 1,
-		// }),
+		new webpack.BannerPlugin({
+			banner: 'window.athos = window.athos || {};\nwindow.athos.managed = true;',
+			raw: true,
+			entryOnly: true,
+		}),
 	],
 	module: {
 		strictExportPresence: true,
@@ -22,7 +27,7 @@ module.exports = {
 				use: 'ts-loader',
 				exclude: /node_modules/,
 			},
-		]
+		],
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'],

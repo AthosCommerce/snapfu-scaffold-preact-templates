@@ -1,4 +1,4 @@
-import { SnapTemplates } from '@searchspring/snap-preact';
+import { SnapTemplates } from '@athoscommerce/snap-preact';
 import { globalStyles } from './styles';
 
 // const breakpoints = {
@@ -6,19 +6,22 @@ import { globalStyles } from './styles';
 // 	tablet: 1030,
 // 	desktop: 1230
 // };
+
 new SnapTemplates({
 	config: {
 		siteId: '{{ snapfu.siteId }}',
 		platform: '{{ snapfu.variables.platform }}',
 	},
+	// plugins: {},
 	// components: {
 	// 	result: {
 	// 		CustomResult: async () => (await import('./components/Result')).CustomResult,
 	// 	},
 	// },
 	theme: {
-		extends: 'base',
+		extends: 'pike',
 		style: globalStyles,
+		// resultComponent: 'CustomResult',
 		// variables: {
 		// 	breakpoints: breakpoints,
 		// 	colors: {}
@@ -30,13 +33,11 @@ new SnapTemplates({
 		// 	desktop: {}
 		// },
 	},
-	// plugins: {},
 	search: {
 		targets: [
 			{
-				selector: '#searchspring-templates',
+				selector: '#athos-templates',
 				component: 'Search',
-				// resultComponent: 'Result',
 			},
 		],
 	},
@@ -45,8 +46,7 @@ new SnapTemplates({
 			{
 				inputSelector: 'input#search-input',
 				selector: 'input#search-input',
-				component: 'AutocompleteTemplate',
-				// resultComponent: 'Result',
+				component: 'AutocompleteFixed',
 			},
 		],
 	},
