@@ -4,7 +4,6 @@ export const globalStyles = (theme) => {
 		// '.ss__result': {
 		// 	background: variables.colors.primary,
 		// },
-
 		// // mobile styles
 		// [`@media (max-width: ${variables.breakpoints[0]}px)`]: {
 		// 	'.ss__result': {},

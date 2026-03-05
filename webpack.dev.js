@@ -1,3 +1,6 @@
+// DO NOT EDIT - THIS FILE CAN/WILL BE REPLACED!!!
+// ***********************************************
+
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require('path');
@@ -14,7 +17,7 @@ const universal = merge(common, {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
-				include: [/node_modules\/@searchspring/, path.resolve(__dirname, 'src')],
+				include: [/node_modules\/@athos/, path.resolve(__dirname, 'src')],
 				use: {
 					loader: 'babel-loader',
 					options: {
@@ -30,34 +33,6 @@ const universal = merge(common, {
 				},
 			},
 		],
-	},
-	devtool: 'source-map',
-	devServer: {
-		server: 'https',
-		port: 3333,
-		hot: true,
-		allowedHosts: 'all',
-		headers: {
-			'Access-Control-Allow-Origin': '*',
-		},
-		static: {
-			directory: path.join(__dirname, 'public'),
-			publicPath: ['/'],
-			watch: true,
-		},
-		devMiddleware: {
-			publicPath: '/',
-		},
-		client: {
-			overlay: {
-				errors: true,
-				warnings: false,
-				runtimeErrors: false,
-			},
-			webSocketURL: {
-				hostname: 'localhost',
-			},
-		},
 	},
 	devtool: 'source-map',
 });
@@ -90,6 +65,34 @@ const modern = merge(common, {
 				},
 			},
 		],
+	},
+	devServer: {
+		server: 'https',
+		port: 3333,
+		hot: true,
+		allowedHosts: 'all',
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+		},
+		static: {
+			directory: path.join(__dirname, 'public'),
+			publicPath: ['/'],
+			watch: true,
+		},
+		devMiddleware: {
+			publicPath: '/',
+		},
+		client: {
+			logging: 'error',
+			overlay: {
+				errors: true,
+				warnings: false,
+				runtimeErrors: false,
+			},
+			webSocketURL: {
+				hostname: 'localhost',
+			},
+		},
 	},
 	devtool: 'source-map',
 });

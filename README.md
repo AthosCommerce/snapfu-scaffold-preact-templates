@@ -25,4 +25,4 @@ Files are output to `./dist`
 ## Resources
 
 https://preactjs.com/guide/v10/getting-started  
-https://searchspring.github.io/snap/#/start-preact
+https://athoscommerce.github.io/snap/#/start-preact

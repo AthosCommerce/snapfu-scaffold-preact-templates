@@ -5,15 +5,15 @@
  */
 
 module.exports = {
-    ci: {
-        collect: {
-            numberOfRuns: 3,
-            staticDistDir: './tests/lighthouse/public', // for localhost
-            url: ['http://localhost/lighthouse.html'],
-        },
-        upload: {
-            target: 'filesystem',
-            outputDir: './tests/lighthouse/runs',
-        },
-    },
+	ci: {
+		collect: {
+			numberOfRuns: 3,
+			staticDistDir: './tests/lighthouse/public', // for localhost
+			url: ['http://localhost/lighthouse.html'],
+		},
+		upload: {
+			target: 'filesystem',
+			outputDir: './tests/lighthouse/runs',
+		},
+	},
 };
