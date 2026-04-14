@@ -1,4 +1,6 @@
-export const globalStyles = (theme: { name?: string; variables: ThemeVariables }) => {
+import type { GlobalThemeStyleScript } from '@athoscommerce/snap-preact';
+
+export const globalStyles: GlobalThemeStyleScript = (theme: { name?: string; variables: ThemeVariables }) => {
 	const { variables } = theme;
 	return {
 		'.ss__result': {
