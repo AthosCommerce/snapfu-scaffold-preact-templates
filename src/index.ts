@@ -1,4 +1,5 @@
 import { SnapTemplates } from '@athoscommerce/snap-preact';
+import type { SnapTemplatesConfig } from '@athoscommerce/snap-preact';
 import { globalStyles } from './styles';
 
 // const breakpoints = {
@@ -7,10 +8,13 @@ import { globalStyles } from './styles';
 // 	desktop: 1230
 // };
 
-new SnapTemplates({
+const templatesConfig: SnapTemplatesConfig = {
+	unlocked: false,
 	config: {
 		siteId: '{{ snapfu.siteId }}',
 		platform: '{{ snapfu.variables.platform }}',
+		language: 'en',
+		currency: 'usd',
 	},
 	// plugins: {},
 	// components: {
@@ -19,9 +23,8 @@ new SnapTemplates({
 	// 	},
 	// },
 	theme: {
-		extends: 'pike',
+		extends: 'base',
 		style: globalStyles,
-		// resultComponent: 'CustomResult',
 		// variables: {
 		// 	breakpoints: breakpoints,
 		// 	colors: {}
@@ -50,4 +53,6 @@ new SnapTemplates({
 			},
 		],
 	},
-});
+};
+
+new SnapTemplates(templatesConfig);
