@@ -30,7 +30,11 @@ const templatesConfig: SnapTemplatesConfig = {
 		// 	colors: {}
 		// },
 		// overrides: {
-		// 	default: {},
+		// 	default: {
+		// 		'search result': {
+		// 			// customComponent: 'CustomResult',
+		// 		},
+		// 	},
 		// 	mobile: {},
 		// 	tablet: {},
 		// 	desktop: {}
