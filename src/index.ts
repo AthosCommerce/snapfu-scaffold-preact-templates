@@ -1,5 +1,4 @@
 import { SnapTemplates } from '@athoscommerce/snap-preact';
-import type { SnapTemplatesConfig } from '@athoscommerce/snap-preact';
 import { globalStyles } from './styles';
 
 // const breakpoints = {
@@ -9,7 +8,6 @@ import { globalStyles } from './styles';
 // };
 
 const templatesConfig: SnapTemplatesConfig = {
-	unlocked: false,
 	config: {
 		siteId: '{{ snapfu.siteId }}',
 		platform: '{{ snapfu.variables.platform }}',
@@ -51,7 +49,6 @@ const templatesConfig: SnapTemplatesConfig = {
 	autocomplete: {
 		targets: [
 			{
-				inputSelector: 'input#search-input',
 				selector: 'input#search-input',
 				component: 'AutocompleteFixed',
 			},

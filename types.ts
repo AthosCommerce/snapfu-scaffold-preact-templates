@@ -14,6 +14,8 @@ declare global {
 	// snap types
 	type Snap = SnapPreactTypes.Snap;
 	type SnapConfig = SnapPreactTypes.SnapConfig;
+	type SnapTemplatesConfig = SnapPreactTypes.SnapTemplatesConfig;
+	type SnapTemplatesConfigUnlocked = SnapPreactTypes.SnapTemplatesConfigUnlocked;
 
 	// controller types
 	type AbstractController = ControllerTypes.AbstractController;
