@@ -7,10 +7,12 @@ import { globalStyles } from './styles';
 // 	desktop: 1230
 // };
 
-new SnapTemplates({
+const templatesConfig: SnapTemplatesConfig = {
 	config: {
 		siteId: '{{ snapfu.siteId }}',
 		platform: '{{ snapfu.variables.platform }}',
+		language: 'en',
+		currency: 'usd',
 	},
 	// plugins: {},
 	// components: {
@@ -19,15 +21,18 @@ new SnapTemplates({
 	// 	},
 	// },
 	theme: {
-		extends: 'pike',
+		extends: 'base',
 		style: globalStyles,
-		// resultComponent: 'CustomResult',
 		// variables: {
 		// 	breakpoints: breakpoints,
 		// 	colors: {}
 		// },
 		// overrides: {
-		// 	default: {},
+		// 	default: {
+		// 		'search result': {
+		// 			// customComponent: 'CustomResult',
+		// 		},
+		// 	},
 		// 	mobile: {},
 		// 	tablet: {},
 		// 	desktop: {}
@@ -44,10 +49,11 @@ new SnapTemplates({
 	autocomplete: {
 		targets: [
 			{
-				inputSelector: 'input#search-input',
 				selector: 'input#search-input',
 				component: 'AutocompleteFixed',
 			},
 		],
 	},
-});
+};
+
+new SnapTemplates(templatesConfig);

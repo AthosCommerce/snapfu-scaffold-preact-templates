@@ -6,6 +6,7 @@ import type * as ComponentTypes from '@athoscommerce/snap-preact/components';
 import type * as ControllerTypes from '@athoscommerce/snap-controller';
 import type * as StoreTypes from '@athoscommerce/snap-store-mobx';
 import type * as EventManagerTypes from '@athoscommerce/snap-event-manager';
+import type { GlobalThemeStyleScript } from '@athoscommerce/snap-preact';
 
 declare global {
 	const BRANCHNAME: string;
@@ -13,6 +14,8 @@ declare global {
 	// snap types
 	type Snap = SnapPreactTypes.Snap;
 	type SnapConfig = SnapPreactTypes.SnapConfig;
+	type SnapTemplatesConfig = SnapPreactTypes.SnapTemplatesConfig;
+	type SnapTemplatesConfigUnlocked = SnapPreactTypes.SnapTemplatesConfigUnlocked;
 
 	// controller types
 	type AbstractController = ControllerTypes.AbstractController;
@@ -37,8 +40,10 @@ declare global {
 
 	// component types
 	type Theme = ComponentTypes.Theme;
-	type ResultComponent = ComponentTypes.ResultComponent;
+	type ThemeVariables = ComponentTypes.ThemeVariables;
 
+	//style types 
+	type StyleScript = GlobalThemeStyleScript;
 	// window globals
 	interface Window {
 		mergeSnapConfig?: any;
