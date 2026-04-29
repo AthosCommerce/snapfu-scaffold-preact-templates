@@ -16,7 +16,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: searchspring/snap-action
-          ref: templates
       - name: Run @searchspring/snap-action
         uses: ./
         with:
