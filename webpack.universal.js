@@ -20,7 +20,7 @@ module.exports = merge(common, {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
-				include: [/node_modules\/@searchspring/, path.resolve(__dirname, 'src')],
+				include: [/node_modules\/@athoscommerce/, path.resolve(__dirname, 'src')],
 				use: {
 					loader: 'babel-loader',
 					options: {
