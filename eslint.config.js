@@ -17,7 +17,7 @@ module.exports = [
 			'no-debugger': 'error',
 			'no-console': 'error',
 			'no-magic-numbers': 'off',
-			'snap-config/validate-result-component': 'error',
+			'snap-config/validate-config': 'error',
 		},
 	},
 ];
