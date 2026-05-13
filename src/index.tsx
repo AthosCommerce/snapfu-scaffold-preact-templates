@@ -49,7 +49,7 @@ const templatesConfig: SnapTemplatesConfig = {
 	autocomplete: {
 		targets: [
 			{
-				selector: 'input#search-input',
+				inputSelector: 'input#search-input',
 				component: 'AutocompleteFixed',
 			},
 		],

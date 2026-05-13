@@ -1,5 +1,5 @@
 /**
- * ESLint rule: validate-result-component
+ * ESLint rule: validate-config
  *
  * Validates `customComponent` string values against the appropriate
  * section in `components` based on the property path context.
