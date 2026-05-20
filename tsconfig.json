@@ -14,5 +14,5 @@
 		"jsxImportSource": "preact",
 	},
 	"exclude": ["**/node_modules/*", "**/dist/**"],
-	"include": ["src", "types.ts"]
+	"include": ["src"]
 }

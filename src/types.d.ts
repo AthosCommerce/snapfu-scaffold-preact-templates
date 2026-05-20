@@ -46,25 +46,9 @@ declare global {
 	type StyleScript = GlobalThemeStyleScript;
 	type GlobalStyles = SnapPreactTypes.GlobalThemeStyleScript;
 
-	// window globals
-	interface Window {
-		mergeSnapConfig?: any;
-	}
-
-	type ResultProps = ComponentTypes.ResultProps & {
-		result: Result
-	}
-
-	//Add your custom result typing here
-	type Result = StoreTypes.Product & {
-		// attributes: {
-		// }
-		// custom: {
-		// }
+    type ResultProps = ComponentTypes.ResultProps & {
+		result: Result;
 	};
-
 }
 
-// declare module 'mobx-react' {
-// 	function observer(component: any): any;
-// }
+export {};
