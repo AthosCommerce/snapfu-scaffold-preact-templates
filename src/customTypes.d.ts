@@ -8,9 +8,6 @@ declare global {
 
 	// Add your custom result typing here
 	type Result = StoreTypes.Product & {
-		attributes: {
-			himom: string;
-		};
 		// attributes: {
 		// }
 		// custom: {
