@@ -29,8 +29,8 @@ const templatesConfig: SnapTemplatesConfig = {
 		// },
 		// overrides: {
 		// 	default: {
-		// 		'search result': {
-		// 			// customComponent: 'CustomResult',
+		// 		'search': {
+		// 			// resultComponent: 'CustomResult',
 		// 		},
 		// 	},
 		// 	mobile: {},
