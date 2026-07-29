@@ -12,7 +12,7 @@
 		"test": "echo \"No tests for Snap template project\"",
 		"lighthouse": "lhci --config ./tests/lighthouse/lighthouserc.js autorun",
 		"clean": "rm -rf ./node_modules && rm -f ./package-lock.json",
-		"dev": "kill $(lsof -ti:3333,8888); webpack serve --config webpack.dev.js",
+		"dev": "kill-port 3333 && webpack serve --config webpack.dev.js",
 		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
 		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\""
 	},
@@ -58,6 +58,7 @@
 		"eslint": "^9.39.3",
 		"eslint-plugin-react": "^7.37.5",
 		"husky": "^9.1.7",
+		"kill-port": "^2.0.1",
 		"lint-staged": "^16.3.2",
 		"prettier": "^3.8.1",
 		"ts-loader": "9.5.4",
