@@ -1,4 +1,4 @@
-import { SnapTemplates } from '@athoscommerce/snap-preact';
+import { SnapTemplates, validateTemplatesConfig } from '@athoscommerce/snap-preact';
 import { globalStyles } from './styles';
 
 // const breakpoints = {
@@ -7,7 +7,7 @@ import { globalStyles } from './styles';
 // 	desktop: 1230
 // };
 
-const templatesConfig: SnapTemplatesConfig = {
+const templatesConfig = validateTemplatesConfig({
 	config: {
 		siteId: '{{ snapfu.siteId }}',
 		platform: '{{ snapfu.variables.platform }}',
@@ -54,6 +54,6 @@ const templatesConfig: SnapTemplatesConfig = {
 			},
 		],
 	},
-};
+});
 
 new SnapTemplates(templatesConfig);
