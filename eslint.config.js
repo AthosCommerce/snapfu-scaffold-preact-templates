@@ -1,5 +1,5 @@
 const tsParser = require('@typescript-eslint/parser');
-const snapConfigPlugin = require('./eslint-rules/index.cjs');
+const snapConfigPlugin = require('@athoscommerce/snap-preact/eslintplugin');
 
 module.exports = [
 	{
