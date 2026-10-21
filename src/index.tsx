@@ -1,12 +1,6 @@
 import { SnapTemplates, validateTemplatesConfig } from '@athoscommerce/snap-preact';
 import { globalStyles } from './styles';
 
-// const breakpoints = {
-// 	mobile: 830,
-// 	tablet: 1030,
-// 	desktop: 1230
-// };
-
 const templatesConfig = validateTemplatesConfig({
 	config: {
 		siteId: '{{ snapfu.siteId }}',
@@ -23,8 +17,13 @@ const templatesConfig = validateTemplatesConfig({
 	theme: {
 		extends: 'base',
 		style: globalStyles,
+		// globalResultComponent: 'CustomResult',
 		// variables: {
-		// 	breakpoints: breakpoints,
+		// 	breakpoints: {
+		// 		mobile: 830,
+		// 		tablet: 1030,
+		// 		desktop: 1230,
+		// 	},
 		// 	colors: {}
 		// },
 		// overrides: {
