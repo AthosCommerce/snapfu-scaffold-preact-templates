@@ -2,6 +2,7 @@
 // ***********************************************
 
 const tsParser = require("@typescript-eslint/parser");
+const tseslint = require("typescript-eslint");
 const snapConfigPlugin = require("@athoscommerce/snap-preact/eslintplugin");
 
 module.exports = [
@@ -20,13 +21,28 @@ module.exports = [
     languageOptions: {
       parser: tsParser,
     },
+    // eslint-disable comments are ignored, so the rules below can't be switched off inline
+    linterOptions: {
+      noInlineConfig: true,
+    },
     plugins: {
+      "@typescript-eslint": tseslint.plugin,
       "snap-config": snapConfigPlugin,
     },
     rules: {
       "no-debugger": "error",
       "no-console": "error",
       "no-magic-numbers": "off",
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/ban-ts-comment": [
+        "error",
+        { "ts-expect-error": true, "ts-ignore": true, "ts-nocheck": true },
+      ],
+      // bans `as X` and `<X>value`; `as const` is still allowed
+      "@typescript-eslint/consistent-type-assertions": [
+        "error",
+        { assertionStyle: "never" },
+      ],
       "snap-config/validate-config": "error",
     },
   },

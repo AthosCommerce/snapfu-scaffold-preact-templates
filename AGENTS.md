@@ -6,27 +6,27 @@ An Athos Commerce **Snap Templates** integration for one storefront, generated b
 
 Snap Templates is configuration-first. The whole integration is one `SnapTemplates` config in `src/index.tsx`, built on the themes and components in `@athoscommerce/snap-preact`. In locked mode the only custom Preact code it accepts is result and badge components. That is deliberate, not a limitation to work around.
 
-Docs: [Config](https://athoscommerce.github.io/snap/templates-config) · [Theming](https://athoscommerce.github.io/snap/templates-theming) · [How Tos](https://athoscommerce.github.io/snap/templates-how-tos). Look up props, defaults and config keys there, or in the installed package's types. Don't rely on memory: legal props change between releases.
+Docs, as raw markdown that a plain fetch can read (the docs site's own routes are a client-rendered app): [About](https://athoscommerce.github.io/snap/docs/TEMPLATES_ABOUT.md) · [Config](https://athoscommerce.github.io/snap/docs/TEMPLATES_CONFIG.md) · [Theming](https://athoscommerce.github.io/snap/docs/TEMPLATES_THEMING.md) · [Plugins](https://athoscommerce.github.io/snap/docs/TEMPLATES_PLUGINS.md) · [Localization](https://athoscommerce.github.io/snap/docs/TEMPLATES_LOCALIZATION.md) · [How To](https://athoscommerce.github.io/snap/docs/TEMPLATES_HOW_TO.md). Look up props, defaults and config keys there, or in the installed package's types. Don't rely on memory: legal props change between releases.
 
 ## Stack
 
-Preact 10, not React: the JSX pragma is `h` and hooks come from `preact/hooks`. MobX state, TypeScript compiled by `ts-loader` with `strict: false`, Emotion object styles through the theme style script. webpack builds two bundles, `modern` and `universal` (for legacy browsers).
+Preact 10, not React. `.tsx` files compile through `ts-loader` with the automatic JSX runtime (`jsxImportSource: preact`), so don't import `h`. Hooks come from `preact/hooks`; never import from `react`. MobX state, TypeScript with `strict: false`, Emotion object styles through the theme style script. webpack builds two bundles, `modern` and `universal` (for legacy browsers).
 
 ## Commands
 
-| Task         | Command                           | Notes                                                                                                                     |
-| ------------ | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Install      | `npm ci`                          | Use `npm install` only before a `package-lock.json` exists, or when changing dependencies                                 |
-| Dev server   | `npm run dev`                     | `https://localhost:3333` serves `public/index.html`: search mounts on `#athos-templates`, autocomplete on `#search-input` |
-| Build        | `npm run build`                   | Both bundles into `dist/`. ts-loader type-checks, so a type error fails the build                                         |
-| Typecheck    | `npx tsc --noEmit --skipLibCheck` | Faster than a build. `--skipLibCheck` is required: plain `tsc` reports errors inside `node_modules` declarations          |
-| Lint         | `npm run lint`                    | Runs `eslint --fix`, so it rewrites files. Includes the `snap-config/validate-config` rule                                |
-| Format       | `npm run format`                  | Prettier                                                                                                                  |
-| Upgrade Snap | `snapfu patch apply latest`       | Bumps `@athoscommerce/snap-preact` and updates the scaffold-managed files. Don't bump versions by hand                    |
+| Task         | Command                     | Notes                                                                                                                     |
+| ------------ | --------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Install      | `npm ci`                    | Use `npm install` only before a `package-lock.json` exists, or when changing dependencies                                 |
+| Dev server   | `npm run dev`               | `https://localhost:3333` serves `public/index.html`: search mounts on `#athos-templates`, autocomplete on `#search-input` |
+| Build        | `npm run build`             | Both bundles into `dist/`. ts-loader type-checks, so a type error fails the build                                         |
+| Typecheck    | `npm run typecheck`         | `tsc --noEmit`. Faster than a build                                                                                       |
+| Lint         | `npm run lint`              | Runs `eslint --fix`, so it rewrites files. See [What lint enforces](#what-lint-enforces)                                  |
+| Format       | `npm run format`            | Prettier                                                                                                                  |
+| Upgrade Snap | `snapfu patch apply latest` | Bumps `@athoscommerce/snap-preact` and updates the scaffold-managed files. Don't bump versions by hand                    |
 
 A Husky pre-commit hook runs Prettier and `eslint --fix` on staged files in `src/`.
 
-`.github/workflows/deploy.yml` builds and deploys **every push to every branch**. Run lint and a build locally first; don't push to find out whether something compiles.
+`.github/workflows/deploy.yml` runs the Snap Action on **every push to every branch**. It builds and tests, and in `snap-implementations` repos it also deploys. Run lint and a build locally first; don't push to find out whether something compiles.
 
 ## Layout
 
@@ -87,6 +87,18 @@ The same applies inside components, where a Snap component's prop types are the 
 export const isSearchController = (controller: ResultProps['controller']): controller is SearchController => controller?.type === 'search';
 ```
 
+## What lint enforces
+
+`npm run lint` and the pre-commit hook fail on:
+
+- `any` written anywhere, including `Record<string, any>` (`@typescript-eslint/no-explicit-any`)
+- `@ts-ignore`, `@ts-expect-error` and `@ts-nocheck` (`@typescript-eslint/ban-ts-comment`)
+- type assertions, both `as X` and `<X>value` (`@typescript-eslint/consistent-type-assertions`). `as const` and type guards like the one above are allowed
+- invalid override selectors and props, and `resultComponent` or `customComponent` names that aren't registered, in the inline config (`snap-config/validate-config`)
+- `console.*` and `debugger`
+
+`eslint-disable` comments are ignored (`noInlineConfig`), so none of these can be switched off inline. Lint can't see an implicit `any`, a type looser than it needs to be, or config moved out of `index.tsx`. Those are still on the author.
+
 ## index.tsx
 
 `index.tsx` holds exactly three things:
@@ -97,7 +109,7 @@ export const isSearchController = (controller: ResultProps['controller']): contr
 
 **Keep the config literal inline, in one piece.** The `snap-config/validate-config` lint rule only reads an object literal passed straight to `validateTemplatesConfig`, and typed linting is configured for `src/index.tsx` alone. TypeScript's excess-property checks also apply only to fresh literals. Overrides imported from another file let a misspelled prop next to a valid one, and a `resultComponent` naming an unregistered component, pass both `tsc` and `npm run lint`. Written inline, lint flags both.
 
-Plain values stay inline because they are configuration: `siteId`, breakpoints, colors, labels, layout arrays. Everything else lives in its own module and is imported:
+Plain values stay inline too, because they are configuration and inline is where they're checked: `siteId`, breakpoints, colors, labels, layout arrays. A `tablett` typo in a hoisted `const breakpoints` passes `tsc`; inline, it's an error. Everything else lives in its own module and is imported:
 
 | Kind                                                                                             | Home                                                          |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
@@ -126,9 +138,10 @@ Delete code rather than commenting it out. Replace the scaffold's commented exam
 - **Target Snap's `.ss__*` classes** and the class names your own components render. Never select on Emotion-generated class names (`css-1a2b3c`).
 - **Native page elements can't be styled from here.** Global styles are scoped under Snap's theme root, so selectors for the storefront's own header search, predictive dropdown or drawers never match. Those changes belong in the site theme: list them for the engineer. Hiding native elements for local preview goes in `public/index.html` only.
 - **Use theme variables.** Build media queries from `variables.breakpoints`, never hardcoded pixels, so they stay in sync with the responsive overrides. Read brand colors from `variables.colors` (`primary`, `secondary`, `accent`), set once in `theme.variables`.
+- **Nest media queries inside the selector they change**, as the starter `styles.ts` does, rather than as top-level `@media` blocks. The CSS output is the same, and each selector's rules stay in one place.
 - **Return one plain object** from `globalStyles`. The SDK shallow-merges it with `Object.assign`, so an array breaks even though the type allows one.
 
-When `styles.ts` grows, split it into one module per area under `src/styles/`. The spread that combines them is shallow, so two modules that both return the same `@media` key silently drop one of them. Nest media queries inside each selector, and give every top-level selector exactly one owning module. Leave the module's return type inferred, so the spread type-checks and the result is still checked against `StyleScript` in `styles.ts`:
+When `styles.ts` grows, split it into one module per area under `src/styles/`. The spread that combines them is shallow, so two modules that both return the same top-level key (such as an `@media` block) silently drop one of them. Nested media queries avoid that; also give every top-level selector exactly one owning module. Leave the module's return type inferred, so the spread type-checks and the result is still checked against `StyleScript` in `styles.ts`:
 
 ```ts
 // src/styles/toolbar.ts
@@ -154,16 +167,17 @@ export const globalStyles: StyleScript = (theme) => ({
 ## Components
 
 - **Snap component first.** Before writing UI, check `@athoscommerce/snap-preact/components` and the docs. `Price`, `Image`, `Rating`, `OverlayBadge`, `CalloutBadge`, `Carousel`, `Slideshow`, `Swatches` and `VariantSelection` already exist. Never hand-roll sliders, swatch strips, badges or price formatting.
-- **Select a custom result** with `resultComponent` on a template (`search`, `autocompleteFixed`, a recommendation template) or with `theme.globalResultComponent`.
+- **Select a custom result** with `theme.globalResultComponent` (commented out in the scaffold's config), or with `resultComponent` on a single template (`search`, `autocompleteFixed`, a recommendation template).
 - **One card per design.** If autocomplete or recommendation cards differ from the search card, give each its own component (`src/components/ac/`, `src/components/recs/`) instead of branching on `controller.type` inside one card. A ternary may pick a value, such as a class name or a URL. It shouldn't pick between two blocks of markup.
 - **Keep components to markup.** Shared logic such as price rules, URL building and attribute parsing goes in `src/functions/`.
 - **Props come from the global aliases.** Type a result component as `(props: ResultProps)`. Don't import or redeclare it.
-- **Variant-aware cards** read `result.display.mappings.core`, which updates when a variant is selected; `result.mappings.core` doesn't. Wrap any component that reads state changing after the first render in `observer` from `mobx-react-lite`.
+- **Keep the starter card's reactivity.** `Result.tsx` reads `result.display.mappings.core`, which updates when a variant is selected (`result.mappings.core` doesn't), and is wrapped in `observer` from `mobx-react-lite` so it re-renders when that happens. Keep both when you rebuild the card, and wrap any other component that reads state changing after the first render.
 - **No manual tracking.** Beacon impression and click tracking is built in. Don't add `controller.track.*` calls, `withTracking` or `ResultTracker`.
 
 ## Types
 
-- **No `any`, explicit or implicit.** Because `strict` is off, the compiler won't flag an implicit `any`. Annotate function parameters and empty arrays or objects yourself, and use `unknown` with narrowing when a type is genuinely open.
+- **No `any`, explicit or implicit.** Lint rejects an explicit `any`, but because `strict` is off, nothing flags an implicit one. Annotate function parameters and empty arrays or objects yourself, and use `unknown` with narrowing when a type is genuinely open.
+- **Keep the `react` paths in `tsconfig.json`.** They map `react` and `react-dom` to `preact/compat`, matching the webpack alias, so React-typed libraries such as `mobx-react-lite` resolve. Without them, every `observer()` component is typed `any` and stops being checked.
 - **Project types go in `src/customTypes.d.ts`.** They are ambient, so other files use them without importing. Use the slots it provides: `interface Window` for platform and app globals, and `type Result` for feed fields (`attributes`) and values plugins attach at runtime (`custom`). Mark fields optional unless the feed always sends them. Don't declare types in components or in `index.tsx`, and don't create `src/types/`.
 - **Reuse the global aliases** from `src/types.d.ts` (`ResultProps`, `SearchController`, `StyleScript`, `ThemeVariables` and others) and derive from them, as in `ResultProps['onAddToCartClick']`, instead of writing parallel types. Extend `Result`, never `ResultProps`.
 - **Custom elements** copied from a theme's markup get a real type, never `any`. Add this to `customTypes.d.ts`, above `declare global`:
@@ -187,17 +201,10 @@ export const globalStyles: StyleScript = (theme) => ({
 - Facets and sort options come from the API. Never hardcode them or trim the list to match a design: style whatever comes back.
 - If the search input isn't inside a `<form>`, set `autocomplete.action` to the results page URL, or submitting goes nowhere.
 - `config.siteId` decides which index every request hits. A wrong one quietly returns another store's products, so don't change it without confirming.
-- Lint enforces only `no-console`, `no-debugger` and the config validator. Everything else on this page is on the author.
 
 ## Before you finish
 
-- `npm run lint` is clean, and `npm run build` (or the typecheck) passes.
+- `npm run lint`, `npm run typecheck` and `npm run build` all pass.
 - The config still uses `validateTemplatesConfig`, has no `unlocked` key, and is a single inline literal in `index.tsx`.
-- This search comes back empty:
-
-  ```bash
-  grep -rnE ':\s*any\b|<any>|as any|as unknown as|@ts-(ignore|expect-error|nocheck)|eslint-disable' src --exclude=types.d.ts
-  ```
-
 - No new CSS, function bodies or JSX in `index.tsx`.
 - The dev server at `https://localhost:3333` renders at mobile, tablet and desktop widths, with no build overlay and no console errors.

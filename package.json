@@ -14,7 +14,8 @@
 		"clean": "rm -rf ./node_modules && rm -f ./package-lock.json",
 		"dev": "webpack serve --config webpack.dev.js",
 		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
-		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\""
+		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\"",
+		"typecheck": "tsc --noEmit"
 	},
 	"athos": {
 		"version": "1.13.2",
@@ -61,6 +62,7 @@
 		"lint-staged": "^16.3.2",
 		"prettier": "^3.8.1",
 		"ts-loader": "9.5.4",
+		"typescript": "6.0.3",
 		"typescript-eslint": "^8.56.1",
 		"webpack": "^5.105.4",
 		"webpack-bundle-analyzer": "^5.2.0",

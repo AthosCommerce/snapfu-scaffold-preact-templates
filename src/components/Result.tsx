@@ -1,9 +1,9 @@
-import { h } from 'preact';
+import { observer } from 'mobx-react-lite';
 import { Price, Image, OverlayBadge, CalloutBadge, Rating } from '@athoscommerce/snap-preact/components';
 
-export const CustomResult = (props: ResultProps) => {
+export const CustomResult = observer((props: ResultProps) => {
 	const { result, controller, treePath } = props;
-	const core = result.mappings.core;
+	const core = result.display.mappings.core;
 
 	return (
 		<article className="ss__custom-result">
@@ -40,4 +40,4 @@ export const CustomResult = (props: ResultProps) => {
 			</div>
 		</article>
 	);
-};
+});
