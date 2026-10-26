@@ -1,4 +1,9 @@
+<!-- DO NOT EDIT - THIS FILE CAN/WILL BE REPLACED!!! -->
+<!-- *********************************************** -->
+
 # AGENTS.md
+
+This file is scaffold-managed: `snapfu patch` replaces it, and edits made here are lost. Notes specific to this site belong in [PROJECT_NOTES.md](PROJECT_NOTES.md). Read it before you start.
 
 ## Project
 
@@ -41,9 +46,11 @@ src/
 ├── types.d.ts         scaffold-managed global type aliases: DO NOT EDIT
 └── universal.ts       legacy-browser entry: loads polyfills, then imports index
 public/index.html      local dev page only, never shipped
+AGENTS.md              this file, scaffold-managed: DO NOT EDIT
+PROJECT_NOTES.md       notes specific to this site, owned by the project
 ```
 
-**Scaffold-managed files** open with `DO NOT EDIT - THIS FILE CAN/WILL BE REPLACED!!!`: `src/types.d.ts`, `eslint.config.js` and the `webpack.*.js` files. `snapfu patch` overwrites them and local edits are lost without warning. If one seems to need a change, raise it as a scaffold change instead.
+**Scaffold-managed files** open with `DO NOT EDIT - THIS FILE CAN/WILL BE REPLACED!!!`: `src/types.d.ts`, `eslint.config.js`, the `webpack.*.js` files and this `AGENTS.md`. `snapfu patch` overwrites them and local edits are lost without warning. If one seems to need a change, raise it as a scaffold change instead.
 
 ## Stay locked
 
@@ -208,3 +215,4 @@ export const globalStyles: StyleScript = (theme) => ({
 - The config still uses `validateTemplatesConfig`, has no `unlocked` key, and is a single inline literal in `index.tsx`.
 - No new CSS, function bodies or JSX in `index.tsx`.
 - The dev server at `https://localhost:3333` renders at mobile, tablet and desktop widths, with no build overlay and no console errors.
+- Decisions made for this site that the next person needs are recorded in `PROJECT_NOTES.md`.
