@@ -8,7 +8,9 @@
 		<meta name="description" content="Snap Lighthouse test HTML document." />
 		<title>snApp Lighthouse Test</title>
 
-		<script src="dist/bundle.js" id="athos-context"></script>
+		<script src="dist/bundle.js" id="athos-context">
+			siteId = '{{ snapfu.siteId }}';
+		</script>
 	</head>
 	<body class="ss-shop">
 		<div id="athos-templates"></div>
