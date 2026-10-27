@@ -1,13 +1,11 @@
 import 'core-js/features/promise';
 import { polyfills } from '@athoscommerce/snap-preact';
 
-const promises = [];
+const promises: Promise<unknown>[] = [];
 if (!('fetch' in window)) {
-	// @ts-ignore
 	promises.push(import('whatwg-fetch'));
 }
 if (!('Symbol' in window) || !('flatMap' in Array.prototype) || !('includes' in Array.prototype)) {
-	// @ts-ignore
 	promises.push(import('core-js/stable'));
 }
 promises.push(polyfills);
